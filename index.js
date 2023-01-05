@@ -1,11 +1,11 @@
 const express = require('express');
-
+var path=require('path');
 const app = express();
 const port = 3000 || process.env.PORT;
 const admin = require('firebase-admin');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
-const serviceAccount = require("./etc/secrets/sercet.json");
+const serviceAccount = require("./sercet.json");
 
 admin.initializeApp({
     credential : admin.credential.cert(serviceAccount)
