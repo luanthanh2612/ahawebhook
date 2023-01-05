@@ -16,6 +16,8 @@ const db = getFirestore();
 app.post('/update_ahamove_status',(req,res)=>{
     
     const body = req.body;
+    console.log(body);
+    
     const collection = db.collection('test');
     collection.doc().set(body,{merge : true});
 
