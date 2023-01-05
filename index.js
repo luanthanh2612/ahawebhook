@@ -5,7 +5,7 @@ const port = 3000 || process.env.PORT;
 const admin = require('firebase-admin');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
-const serviceAccount = require("./sercet.json");
+const serviceAccount = require("./etc/secrets/sercet.json");
 
 admin.initializeApp({
     credential : admin.credential.cert(serviceAccount)
@@ -15,12 +15,19 @@ const db = getFirestore();
 
 app.post('/update_ahamove_status',(req,res)=>{
     
-    const body = res.body;
+    const body = {
+        name : 'Luan',
+        age : 27
+    }
     const collection = db.collection('test');
     collection.doc().set(body,{merge : true});
 
     res.send("Hello!!");
 });
+
+app.get('/',(req,res)=>{
+    res.send("Hello everyone!!!");
+})
 
 app.listen(port,()=>{
     console.log("Server is running at " + port);
