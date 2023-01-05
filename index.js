@@ -15,14 +15,11 @@ const db = getFirestore();
 
 app.post('/update_ahamove_status',(req,res)=>{
     
-    const body = {
-        name : 'Luan',
-        age : 27
-    }
+    const body = req.body;
     const collection = db.collection('test');
     collection.doc().set(body,{merge : true});
 
-    res.send("Hello!!");
+    res.json({sucessful : true,msg:'Ahamove webhook!!'});
 });
 
 app.get('/',(req,res)=>{
