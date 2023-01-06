@@ -1,17 +1,20 @@
 const express = require('express');
-var path=require('path');
 const app = express();
 const port = 3000 || process.env.PORT;
-const admin = require('firebase-admin');
-const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
+const bodyParser = require('body-parser')
+    const admin = require('firebase-admin');
+    const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
-const serviceAccount = require("./sercet.json");
+    const serviceAccount = require("./sercet.json");
 
-admin.initializeApp({
-    credential : admin.credential.cert(serviceAccount)
-})
+    admin.initializeApp({
+        credential : admin.credential.cert(serviceAccount)
+    })
 
-const db = getFirestore();
+    const db = getFirestore();
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended : true}))
 
 app.post('/update_ahamove_status',(req,res)=>{
     
