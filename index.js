@@ -28,6 +28,8 @@ app.post('/update_ahamove_status', (req, res) => {
     const supplierName = body.supplier_name;
     const cancelComment = body.cancel_comment;
     const cancelByUser = body.cancel_by_user;
+    const today = new Date();
+    
 
     const obj = {
         id : id,
@@ -37,7 +39,8 @@ app.post('/update_ahamove_status', (req, res) => {
         supplierName : supplierName,
         cancelComment : cancelComment,
         cancelByUser : cancelByUser,
-        created : new Date()
+        created : new Date(),
+        createdDate : `${today.getDay}/${today.getMonth}/${today.getFullYear}`
     }
 
     const collection = db.collection('test');
