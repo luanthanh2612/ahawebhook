@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 3000 || process.env.PORT;
 const bodyParser = require('body-parser');
-const cancelStatus = "CANCELLED";
 const admin = require('firebase-admin');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 
@@ -43,7 +42,7 @@ app.post('/update_ahamove_status', (req, res) => {
         createdDate : `${today.getDay}/${today.getMonth}/${today.getFullYear}`
     }
 
-    const collection = db.collection('test');
+    const collection = db.collection('prod');
     
     if(!trackingNumber.trim()){
          collection.doc().set(obj,{merge : true});
